@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Advance Sketch Project Bolder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="cmss/css/style.css">
+  <link rel="icon" type="image/png"  href="cmss/img/icon.png"/>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <button class="mobile-menu-btn" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <i class="fas fa-cube"></i> 
+            <span>Advance Sketch Project Bolder 25.1v</span>
+        </div>
+        <div class="actions">
+            <button class="btn" onclick="openModal()">
+                <i class="fas fa-plus"></i> <span class="btn-text-hide">New Project</span>
+            </button>
+            <button class="btn btn-primary" onclick="startDownloadProcess()">
+                <i class="fas fa-download"></i> <span class="btn-text-hide">Export</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="workspace">
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span>Project Explorer</span>
+                <i class="fas fa-folder-tree"></i>
+            </div>
+            <div id="fileExplorer" class="file-tree">
+                </div>
+        </div>
+
+        <div class="editor-container">
+            <div class="tab-bar">
+                <div class="tab active" id="activeTab">
+                    <i class="fas fa-code" style="color: var(--primary);"></i>
+                    <span id="fileNameDisplay">read_me.txt</span>
+                </div>
+            </div>
+            <textarea id="codeEditor" spellcheck="false" placeholder="Select a file to edit..."></textarea>
+        </div>
+    </div>
+
+    <div id="setupModal" class="overlay active">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Create Project</h3>
+                <button class="btn btn-icon-only" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-muted);">Paste your project structure sketch below.</p>
+                <textarea id="sketchInput" class="input-area" placeholder="/app
+│
+├── index.html
+└── style.css">/my-mobile-app
+│
+├── index.html
+├── /css
+│   └── style.css
+├── /js
+│   ├── app.js
+│   └── utils.js
+└── readme.txt # Documentation</textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="startGeneration()">
+                    Generate Project Structure
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="overlay">
+        <div class="modal" style="max-width: 400px; align-items: center; text-align: center;">
+            <div class="modal-body" style="align-items: center; width: 100%;">
+                <i class="fas fa-microchip fa-spin" style="font-size: 3rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                <h3 id="loadingTitle">Processing...</h3>
+                
+                <div class="loader-container">
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+                    <p class="status-text" id="loadingStatus">Initializing AI logic...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+ <script src="srm/js_go/js/sert.js"></script>
+</body>
+</html>
